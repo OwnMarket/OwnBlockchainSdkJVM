@@ -157,6 +157,39 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>release</releaseProfiles>
+                        <goals>deploy</goals>
+                    </configuration>
+                </plugin> 
+                <plugin>
+                    <groupId>se.jiderhamn</groupId>
+                    <artifactId>promote-maven-plugin</artifactId>
+                    <version>2.0.1</version>
+                    <!-- Automatically execute promote:make-promotable after each snapshot build -->
+                    <executions>
+                    <execution>
+                        <goals>
+                        <goal>make-promotable</goal>
+                        </goals>
+                    </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <configuration>
+                        <checkModificationExcludes>
+                            <checkModificationExclude>pom.xml</checkModificationExclude>
+                        </checkModificationExcludes>
+                    </configuration>
+                </plugin>                                                
             </plugins>
         </pluginManagement>
         <plugins>
@@ -175,6 +208,7 @@
                 <version>0.8.1</version>
             </plugin>
         </plugins>
+        <defaultGoal>install</defaultGoal>
     </build>
     <reporting>
         <plugins>

@@ -3,7 +3,45 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.weown</groupId>
     <artifactId>own-blockchain-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0-SNAPSHOT</version>
+    
+    <name>Own Blockchain SDK</name>
+    <description>Own Blockchain SDK Maven Package</description>
+    <url>https://github.com/OwnMarket/OwnBlockchainSdkJVM</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>49847</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>49847</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>        
+    </distributionManagement>   
+
+    <scm>
+        <connection>scm:git:git://github.com/OwnMarket/OwnBlockchainSdkJVM.git</connection>
+        <developerConnection>scm:git:ssh://github.com:OwnMarket/OwnBlockchainSdkJVM.git</developerConnection>
+        <url>https://github.com/OwnMarket/OwnBlockchainSdkJVM/tree/master</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Marian Gheorghe</name>
+            <email>marian.gheorghe@weown.com</email>
+            <organization>OwnMarket</organization>
+            <organizationUrl>https://weown.com</organizationUrl>
+        </developer>
+    </developers> 
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -67,6 +105,57 @@
                         <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
                         <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.7</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <serverId>49847</serverId>
+                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.2.1</version>
+                    <executions>
+                        <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.9.1</version>
+                    <executions>
+                        <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.5</version>
+                    <executions>
+                        <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

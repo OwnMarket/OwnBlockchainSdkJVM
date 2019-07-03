@@ -1,5 +1,8 @@
 package com.weown.blockchain.sdk;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class Dtos {
 
     public static class TxAction {
@@ -53,6 +56,11 @@ public class Dtos {
 
         private void setSignature(String signature) {
             this.signature = signature;
+        }
+
+        public String toJson(boolean indentation) {
+            Gson gson = indentation ? new GsonBuilder().setPrettyPrinting().create() : new Gson();
+            return gson.toJson(this);
         }
     }
 

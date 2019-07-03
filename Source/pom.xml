@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.weown</groupId>
     <artifactId>own-blockchain-sdk</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     
     <name>Own Blockchain SDK</name>
     <description>Own Blockchain SDK Maven Package</description>
@@ -30,7 +30,7 @@
         <connection>scm:git:git://github.com/OwnMarket/OwnBlockchainSdkJVM.git</connection>
         <developerConnection>scm:git:ssh://github.com:OwnMarket/OwnBlockchainSdkJVM.git</developerConnection>
         <url>https://github.com/OwnMarket/OwnBlockchainSdkJVM/tree/master</url>
-      <tag>own-blockchain-sdk-1.0.1</tag>
+      <tag>own-blockchain-sdk-1.0.2</tag>
   </scm>
 
     <developers>

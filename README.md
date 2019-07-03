@@ -22,13 +22,17 @@ Add in your ```pom.xml``` the following dependency
 <dependency>
     <groupId>com.weown</groupId>
     <artifactId>own-blockchain-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 Use the package in Java code
 
 ```java
+
+import com.weown.blockchain.sdk.Wallet;
+import com.weown.blockchain.sdk.Tx;
+
 class Program {
 
     public static void main(String[] args) {
@@ -43,6 +47,7 @@ class Program {
         tx.ActionFee = 0.01m; // Set action fee.
         tx.AddTransferChxAction("CHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", 100); // Transfer 100 CHX to CHxxx... address.    
 
+        // Look at the raw transaction in JSON format
         System.out.println(tx.toJson(true));
 
         // Sign the transaction for submission to node API on TestNet

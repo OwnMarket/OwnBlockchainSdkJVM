@@ -6,7 +6,7 @@ Own Blockchain SDK for JVM
 
 ```bash
 $ git clone https://github.com/OwnMarket/OwnBlockchainSdkJVM.git
-$ cd own-blockchain-sdk
+$ cd Source
 $ mvn compile
 ```
 
@@ -17,7 +17,7 @@ $ mvn test
 ## Usage
 
 Own Blockchain SDK for Java can be used as a Maven package.
-Add in your ```pom.xml``` the following dependency 
+Add in your ```pom.xml``` the following dependency
 ```xml
 <dependency>
     <groupId>com.weown</groupId>
@@ -45,13 +45,13 @@ class Program {
         // Compose a transaction with nonce = 1
         Tx tx = new Tx(wallet.getAddress(), 1);
         tx.setActionFee(0.01f); // Set action fee.
-        tx.addTransferChxAction("CHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", 100); // Transfer 100 CHX to CHxxx... address.    
+        tx.addTransferChxAction("CHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", 100); // Transfer 100 CHX to CHxxx... address.
 
         // Look at the raw transaction in JSON format
         System.out.println(tx.toJson(true));
 
         // Sign the transaction for submission to node API on TestNet
-        System.out.println(tx.sign(networkCode, wallet.getPrivateKey()).toJson(false)); 
-    }    
+        System.out.println(tx.sign(networkCode, wallet.getPrivateKey()).toJson(false));
+    }
 }
 ```

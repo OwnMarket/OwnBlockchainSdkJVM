@@ -1,4 +1,4 @@
-package ownBlockchainSdk;
+package com.weown.blockchain.sdk;
 
 import org.junit.Test;
 

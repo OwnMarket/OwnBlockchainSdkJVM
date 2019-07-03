@@ -1,4 +1,4 @@
-package ownBlockchainSdk;
+package com.weown.blockchain.sdk;
 
 public class Dtos {
 

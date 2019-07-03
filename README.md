@@ -44,7 +44,9 @@ class Program {
         tx.AddTransferChxAction("CHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", 100); // Transfer 100 CHX to CHxxx... address.    
 
         System.out.println(tx.toJson(true));
-        Console.WriteLine(tx.sign(networkCode, wallet.getPrivateKey()).toJson(false));        
+
+        // Sign the transaction for submission to node API on TestNet
+        System.out.println(tx.sign(networkCode, wallet.getPrivateKey()).toJson(false));        
     }    
 }
 ```

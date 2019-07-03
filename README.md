@@ -10,6 +10,8 @@ $ cd Source
 $ mvn compile
 ```
 
+Run tests:
+
 ```bash
 $ mvn test
 ```

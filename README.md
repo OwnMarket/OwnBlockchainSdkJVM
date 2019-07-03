@@ -18,7 +18,7 @@ $ mvn test
 
 Own Blockchain SDK for Java can be used as a Maven package.
 Add in your ```pom.xml``` the following dependency 
-```
+```bash
 <dependency>
     <groupId>com.weown</groupId>
     <artifactId>own-blockchain-sdk</artifactId>
@@ -28,7 +28,7 @@ Add in your ```pom.xml``` the following dependency
 
 Use the package in Java code
 
-```
+```bash
 class Program {
 
     public static void main(String[] args) {
@@ -47,3 +47,4 @@ class Program {
         Console.WriteLine(tx.sign(networkCode, wallet.getPrivateKey()).toJson(false));        
     }    
 }
+```

@@ -1,5 +1,7 @@
 package com.weown.blockchain.sdk;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -42,6 +44,21 @@ public class CryptoTest {
         String expected = "5kHcMrwXUptjmbdR8XBW2yY3FkSFwnMdrVr22Yg39pTR";
         String actual = Crypto.deriveHash(address, nonce, txActionNumber);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testIsValidBlockchainAddress() {
+        Map<String, Boolean> inlineData = new HashMap<String, Boolean>();
+        inlineData.put("CHPvS1Hxs4oLcrbgKWYYmubSBjurjUdvjg8", true);
+        inlineData.put("XRPvS1Hxs4oLcrbgKWYYmubSBjurjUdvjg8", false);
+        inlineData.put("CHPvS1Hxs4oLcgKccYmubSBjurjUdvjg8", false);
+        inlineData.put("CHPvS1Hxs4oLcrbgKccYmubSBjurjUdvjg8", false);
+
+        for (String address : inlineData.keySet()){
+            boolean actual = Crypto.isValidBlockchainAddress(address);
+            boolean expected = inlineData.get(address);
+            assertEquals(expected, actual);
+        }                    
     }
 
     @Test

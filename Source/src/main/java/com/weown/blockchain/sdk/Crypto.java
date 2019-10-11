@@ -5,7 +5,6 @@ import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.ECKey;
@@ -93,6 +92,26 @@ public final class Crypto {
         byte[] sha256_256 = sha256(sha256(publicKeyHashWithPrefix));
         byte[] checksum = Arrays.copyOfRange(sha256_256, 0, 4);
         return encode58(ArrayUtils.addAll(publicKeyHashWithPrefix, checksum));
+    }
+
+    public static boolean isValidBlockchainAddress(String address) {
+        if (address == null || address == "" || !address.startsWith("CH"))
+            return false;
+        
+        byte[] addressBytes = decode58(address);
+        byte[] first2Bytes = Arrays.copyOfRange(addressBytes, 0, 2);
+
+        byte[] addressPrefix = new byte[] { 6, 90 };
+        if (addressBytes.length != 26 || !Arrays.areEqual(first2Bytes, addressPrefix))
+            return false;
+        
+        byte[] publicKeyHashWithPrefix = Arrays.copyOfRange(addressBytes, 0, 22);
+        byte[] checksum = Arrays.copyOfRange(addressBytes, 22, 26);
+
+        byte[] sha256_256 = sha256(sha256(publicKeyHashWithPrefix));
+        byte[] calculatedChecksum = Arrays.copyOfRange(sha256_256, 0, 4);
+
+        return Arrays.areEqual(checksum, calculatedChecksum);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

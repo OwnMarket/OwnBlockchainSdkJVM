@@ -46,7 +46,7 @@ class Program {
 
         // Compose a transaction with nonce = 1
         Tx tx = new Tx(wallet.getAddress(), 1);
-        tx.setActionFee(0.01f); // Set action fee.
+        tx.setActionFee(0.1f); // Set action fee.
         tx.addTransferChxAction("CHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", 100); // Transfer 100 CHX to CHxxx... address.
 
         // Look at the raw transaction in JSON format
